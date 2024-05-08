@@ -3,8 +3,8 @@
 
  class Circulo{
      public:
-        Circulo();
-        ~Circulo();
+        Circulo(){};
+        ~Circulo(){};
     
         float calculeArea(){
             area =  pi * (raio * raio);
@@ -20,16 +20,16 @@
         float area;
 };
 
-
 int main() {
         Circulo conta;
         float raio;
         float area;
         
-        std::cout << "Digite o valor do raio";
+        std::cout << "Digite o valor do raio: ";
         std::cin >> raio;
         
         conta.setRaio(raio);
         area = conta.calculeArea();
+        std::cout << area;
         
     }
