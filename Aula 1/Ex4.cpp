@@ -1,11 +1,3 @@
-/******************************************************************************
-
-                              Online C++ Compiler.
-               Code, Compile, Run and Debug C++ program online.
-Write your code in this editor and press "Run" button to compile and execute it.
-
-*******************************************************************************/
-
 #include <iostream>
 #include <string>
 
@@ -14,13 +6,22 @@ class Aluno {
     public: 
         Aluno(){};
         ~Aluno(){};
-        float calcularMedia(float nota1, float nota2, float nota3){
+        float calcularMedia(){
           media = (nota1 + nota2 + nota3) / 3;
             return media;
         }
+
+      void setNotas(float _nota1, float _nota2, float _nota3){
+        nota1 = _nota1;
+        nota2 = _nota2;
+        nota3 = _nota3;
         
+      }
 
     private:
+      float nota1;
+      float nota2;
+      float nota3;
       float media;
 };
 
@@ -46,12 +47,13 @@ int main()
     std::cin >> nota2;
     std::cout << "Digite a terceira nota: ";
     std::cin >> nota3;
-
-    media = docente.calcularMedia(nota1, nota2, nota3);
+  
+    docente.setNotas(nota1, nota2, nota3);
+    media = docente.calcularMedia();
     if (media > 6){
-        std::cout << "Aluno aprovado com média: " << media;
+        std::cout << "Aluno aprovado com média " << media;
     }else{
-        std::cout << "Aluno reprovado com média: " << media;
+        std::cout << "Aluno reprovado com média " << media;
     }
 
     
