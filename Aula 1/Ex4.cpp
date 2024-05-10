@@ -15,14 +15,21 @@ class Aluno {
         nota1 = _nota1;
         nota2 = _nota2;
         nota3 = _nota3;
-        
+
       }
 
+    void setInfo(std::string _nome, int _matricula){
+        nome = _nome;
+        matricula = _matricula;
+    }
+
     private:
-      float nota1;
-      float nota2;
-      float nota3;
-      float media;
+        float nota1;
+        float nota2;
+        float nota3;
+        float media;
+        int matricula;
+        std::string nome;
 };
 
 int main()
@@ -37,9 +44,11 @@ int main()
 
     std::cout << "Digite o numero da matricula: ";
     std::cin >> matricula;
-  
+
     std::cout << "Escreva o nome do aluno: ";
     std::cin >> nome;
+
+    docente.setInfo(nome, matricula);
 
     std::cout << "Digite a primeira nota: ";
     std::cin >> nota1;
@@ -47,7 +56,7 @@ int main()
     std::cin >> nota2;
     std::cout << "Digite a terceira nota: ";
     std::cin >> nota3;
-  
+
     docente.setNotas(nota1, nota2, nota3);
     media = docente.calcularMedia();
     if (media > 6){
@@ -55,8 +64,6 @@ int main()
     }else{
         std::cout << "Aluno reprovado com média " << media;
     }
-
-    
 
     return 0;
 }
