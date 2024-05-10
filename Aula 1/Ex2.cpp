@@ -39,7 +39,7 @@ int main() {
         float saldo;
         float deposito;
         float saque;
-        string nomeTitular;
+        std::string nomeTitular;
         
         std::cout << "Digite o numero da conta: ";
         std::cin >> numeroConta;
