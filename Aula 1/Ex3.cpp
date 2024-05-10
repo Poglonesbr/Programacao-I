@@ -15,12 +15,11 @@
             return perimetro;
         };
         
-        void setAltura(float _altura){
+        void setMedidas(float _altura, float _largura){
             altura = _altura;
-        };
-        
-        void setLargura(float _largura){
             largura = _largura;
+        };
+
         };
         
     private:
@@ -42,12 +41,12 @@ int main() {
         std::cout << "Digite o valor da largura: ";
         std::cin >> largura;
         
-        conta.setAltura(altura);
-        conta.setLargura(largura);
+        conta.setMedidas(altura, largura);
         area = conta.calculeArea();
         std::cout << "A área é: " << area;
         std::cout << "\n";
         perimetro = conta.calculePerimetro();
         std::cout << "O perimetro é " << perimetro;
-        
+
+    return 0;
     }
