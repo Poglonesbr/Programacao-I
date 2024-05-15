@@ -1,45 +1,55 @@
 #include <iostream>
-#define pi 3.14
+#define pi 3.14 
+// Definir valor de pi no codigo
 
  class Circulo{
      public:
-        Circulo(){};
-        ~Circulo(){};
+        Circulo(){};  // Constutor
+        ~Circulo(){}; // Destrutor
     
-        float calculeArea(){
+        float calculeArea(){  // Método para calcular a area
             area =  pi * (raio * raio);
             return area;
         };
         
-        float calculePerimetro(){
+        float calculePerimetro(){ // Método para calcular a area
             perimetro = pi * raio * 2;
             return perimetro;
         };
         
-        void setRaio(float _raio){
+        void setRaio(float _raio){ // Método para "salvar" o valor de raio na class Circulo
             raio = _raio;
         };
+
+       float getArea() {
+         return area;
+       };
+
+       float getPerimetro() {
+         return perimetro;
+       };
         
-    private:
+    private:  // Definir variaveis
         float raio;
         float area;
         float perimetro;
 };
 
-int main() {
-        Circulo conta;
-        float raio;
+int main() { 
+        Circulo conta; // Instanciar a class no main para ser utilizada no main
+        float raio; // Definir variaveis
         float area;
         float perimetro;
         
-        std::cout << "Digite o valor do raio: ";
+        std::cout << "Digite o valor do raio: "; // Pedir valor do raio
         std::cin >> raio;
         
-        conta.setRaio(raio);
-        area = conta.calculeArea();
-        std::cout << "A área é: " << area;
-        std::cout << "\n";
-        perimetro = conta.calculePerimetro();
-        std::cout << "O perimetro é " << perimetro;
+        conta.setRaio(raio); // Guardar o valor de raio na class Circulo
+ 
+        conta.calculeArea();    //Realizar a conta
+        conta.calculePerimetro():  //Realizar a conta
+         
+        std::cout << "A área é: " << getArea() << endl;        // Print e usar get para retornar o valor
+        std::cout << "O perimetro é " << getPerimetro() << endl;  // Print e usar get para retornar o valor
         
     }
