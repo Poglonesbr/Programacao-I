@@ -44,8 +44,6 @@ int main() {
         Retangulo conta;        //Instânciar o objeto Retangulo no main
         float altura;           //Declaração de variaveis no main
         float largura;
-        float area;
-        float perimetro;
         
         std::cout << "Digite o valor da altura: ";      //Pedir os valores para realizar as contas
         std::cin >> altura;
