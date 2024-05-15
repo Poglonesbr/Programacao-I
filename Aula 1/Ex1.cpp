@@ -1,5 +1,9 @@
 #include <iostream>
 #define pi 3.14 
+#include <string>
+
+using namespace std;
+
 // Definir valor de pi no codigo
 
  class Circulo{
@@ -47,9 +51,9 @@ int main() {
         conta.setRaio(raio); // Guardar o valor de raio na class Circulo
  
         conta.calculeArea();    //Realizar a conta
-        conta.calculePerimetro():  //Realizar a conta
+        conta.calculePerimetro();  //Realizar a conta
          
-        std::cout << "A área é: " << getArea() << endl;        // Print e usar get para retornar o valor
-        std::cout << "O perimetro é " << getPerimetro() << endl;  // Print e usar get para retornar o valor
+        std::cout << "A área é: " << conta.getArea() << endl;        // Print e usar get para retornar o valor
+        std::cout << "O perimetro é " << conta.getPerimetro() << endl;  // Print e usar get para retornar o valor
         
     }
