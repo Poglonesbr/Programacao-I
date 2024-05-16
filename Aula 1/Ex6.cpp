@@ -86,7 +86,6 @@ public:
         return salarioAnual;
     }
     
-    
 
     void setTurno(std::string _turno) {
         turno = _turno;
