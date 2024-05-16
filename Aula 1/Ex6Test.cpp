@@ -1,10 +1,16 @@
 #include <iostream>
 #include <string>
 
+using namespace std;
+
 class Funcionario {
 public:
-    Funcionario() {};
-    ~Funcionario() {};
+    Funcionario() {}
+    virtual ~Funcionario() {}
+
+    void setNome(const std::string& _nome) {
+        nome = _nome;
+    }
 
     void addAumento(float valor) {
         salario += valor;
@@ -20,7 +26,7 @@ public:
         std::cout << "Salário: " << salario << std::endl;
     }
 
-    protected:
+protected:
     std::string nome;
     float salario;
     float salarioAnual;
@@ -28,10 +34,10 @@ public:
 
 class Assistente : public Funcionario {
 public:
-    Assistente() : Funcionario() {};
-    ~Assistente() : Funcionario() {};
+    Assistente()  {}
+    virtual ~Assistente() {}
 
-    int getMatricula() {
+    int getMatricula() const {
         return matricula;
     }
 
@@ -44,42 +50,54 @@ public:
         std::cout << "Matrícula: " << matricula << std::endl;
     }
 
-    private:
+private:
     int matricula;
 };
 
 class Tecnico : public Assistente {
-    public:
-        Tecnico() : Assistente() {};
-        ~Tecnico() : Assistente() {};
+public:
+    Tecnico()  {}
+    ~Tecnico() {}
 
-        float ganhoAnual() override {
-            return salario * 12 + bonusSalarial;
+    float ganhoAnual() override {
+        salarioAnual = salario * 12 + bonusSalarial;
+        return salarioAnual;
     }
 
-    private:
-    double bonusSalarial;
+    void setBonusSalarial(float bonus) {
+        bonusSalarial = bonus;
+    }
+
+private:
+    float bonusSalarial;
 };
 
 class Administrativo : public Assistente {
-    public:
-        Administrativo() : Assistente() {};
-        ~Administrativo() : Assistente() {};
-    
-        float ganhoAnual() override {
-        
-            if (turno == "noite") {
-                double salarioAnual = (salario + adicionalNoturno) * 12;
-            return salarioAnual;
-            } else {
-                double salarioAnual = salario * 12;
-            return salarioAnual;
-            }
-        }
+public:
+    Administrativo() {}
+    ~Administrativo() {}
 
-    private:
-        std::string turno;
-        double adicionalNoturno;
+    float ganhoAnual() override {
+       
+        if (turno == "noite") {
+            salarioAnual = (salario + adicionalNoturno) * 12;
+        } else {
+            salarioAnual = salario * 12;
+        }
+        return salarioAnual;
+    }
+
+    void setTurno(const std::string& _turno) {
+        turno = _turno;
+    }
+
+    void setAdicionalNoturno(float adicional) {
+        adicionalNoturno = adicional;
+    }
+
+private:
+    std::string turno;
+    float adicionalNoturno;
 };
 
 int main() {
@@ -87,9 +105,9 @@ int main() {
     std::string turno;
     int matricula;
     int cargo;
-    double bonusSalarial = 0.0;
-    double adicionalNoturno = 0.0;
-    double salario;
+    float bonusSalarial = 0.0;
+    float adicionalNoturno = 0.0;
+    float salario;
 
     std::cout << "Informe o nome do técnico: ";
     std::cin >> nome;
@@ -100,27 +118,35 @@ int main() {
 
     std::cout << "Informe o cargo (1 - Técnico, 2 - Administrativo): ";
     std::cin >> cargo;
-  Tecnico tecnico(nome, salario, matricula, bonusSalarial);
-  Administrativo admin(nome, salario, matricula, turno, adicionalNoturno);
-  
-    switch(cargo){
-      case 1:
-        std::cout << "Informe o bônus salarial do técnico: ";
-        std::cin >> bonusSalarial;
-        break;
+    Tecnico tecnico;
+    Administrativo admin;
 
-      case 2:
-        std::cout << "Informe o turno do assistente administrativo (dia ou noite): ";
-        std::cin >> turno;
-        std::cout << "Informe o adicional noturno do assistente: ";
-        std::cin >> adicionalNoturno;
-        break;
+    switch(cargo) {
+        case 1:
+            std::cout << "Informe o bônus salarial do técnico: ";
+            std::cin >> bonusSalarial;
+            tecnico.setNome(nome);
+            tecnico.setMatricula(matricula);
+            tecnico.addAumento(salario);
+            tecnico.setBonusSalarial(bonusSalarial);
+            break;
+
+        case 2:
+            std::cout << "Informe o turno do assistente administrativo (dia ou noite): ";
+            std::cin >> turno;
+            std::cout << "Informe o adicional noturno do assistente: ";
+            std::cin >> adicionalNoturno;
+            admin.setNome(nome);
+            admin.setMatricula(matricula);
+            admin.addAumento(salario);
+            admin.setTurno(turno);
+            admin.setAdicionalNoturno(adicionalNoturno);
+            break;
     }
 
-
-    std::cout << std::endl << "Dados do técnico:" << std::endl;
+    std::cout << std::endl << "Dados do técnico:" << endl;
     tecnico.exibeDados();
-    std::cout << "Ganho anual do técnico: " << tecnico.ganhoAnual() << std::endl;
+    std::cout << "Ganho anual do técnico: " << tecnico.ganhoAnual() << endl;
 
     return 0;
 }
