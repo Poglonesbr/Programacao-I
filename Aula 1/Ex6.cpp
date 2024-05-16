@@ -5,24 +5,14 @@ using namespace std;
 class Funcionario {
 public:
     Funcionario() {}
-    virtual ~Funcionario() {}
+     ~Funcionario() {}
 
-    void setNome(const std::string _nome) {
+    void setNome(std::string _nome) {
         nome = _nome;
     }
 
     void setSalario(float _salario) {
         salario = _salario;
-    }
-
-    void addAumento(float _aumento) {
-        aumento = _aumento;
-        salario = salario + aumento;
-    }
-
-    virtual float ganhoAnual() {
-        salarioAnual = salario * 12;
-        return salarioAnual;
     }
 
     virtual void exibeDados() {
@@ -34,17 +24,12 @@ protected:
     std::string nome;
     float salario;
     float salarioAnual;
-    float aumento;
 };
 
 class Assistente : public Funcionario {
 public:
     Assistente()  {};
-    virtual ~Assistente() {};
-
-    int getMatricula() const {
-        return matricula;
-    }
+     ~Assistente() {};
 
     void setMatricula(int _matricula) {
         matricula = _matricula;
@@ -55,8 +40,18 @@ public:
         std::cout << "Matrícula: " << matricula << endl;
     }
 
-private:
-    int matricula;
+    void setCargo(int _cargo) {
+        cargo = _cargo;
+    }
+
+    float getSalarioAnual(){
+        return salarioAnual;
+    }
+
+    protected:
+        int cargo;
+        int matricula;
+        
 };
 
 class Tecnico : public Assistente {
@@ -64,16 +59,16 @@ public:
     Tecnico()  {};
     ~Tecnico() {};
 
-    float ganhoAnual() override {
+    float ganhoAnual() {
         salarioAnual = (salario + bonusSalarial) * 12;
         return salarioAnual;
     }
 
-    void setBonusSalarial(float bonus) {
-        bonusSalarial = bonus;
+    void setBonusSalarial(float _bonusSalarial) {
+        bonusSalarial = _bonusSalarial;
     }
 
-private:
+    private:
     float bonusSalarial;
 };
 
@@ -82,7 +77,7 @@ public:
     Administrativo() {};
     ~Administrativo() {};
 
-    float ganhoAnual() override {
+    float ganhoAnual() {
         if (turno == "noite") {
             salarioAnual = (salario + adicionalNoturno) * 12;
         } else {
@@ -90,13 +85,15 @@ public:
         }
         return salarioAnual;
     }
+    
+    
 
-    void setTurno(const std::string _turno) {
+    void setTurno(std::string _turno) {
         turno = _turno;
     }
 
-    void setAdicionalNoturno(float adicional) {
-        adicionalNoturno = adicional;
+    void setAdicionalNoturno(float _adicionalNoturno) {
+        adicionalNoturno = _adicionalNoturno;
     }
 
 private:
@@ -128,17 +125,20 @@ int main() {
     std::cout << "Informe o cargo (1 - Técnico, 2 - Administrativo): ";
     std::cin >> cargo;
     
-    empregado.setSalario(salario);
+    
 
     switch(cargo) {
         case 1:
-            std::cout << "Informe o bônus salarial do técnico: ";
+            std::cout << "Informe o bônus salarial do assistente técnico: ";
             std::cin >> bonusSalarial;
             tecnico.setNome(nome);
             tecnico.setMatricula(matricula);
-            tecnico.addAumento(salario);
+            tecnico.setSalario(salario);
             tecnico.setBonusSalarial(bonusSalarial);
-            break;
+            std::cout << std::endl << "Dados do empregado:" << endl;
+            tecnico.exibeDados();
+            std::cout << "Ganho anual do técnico: " << tecnico.ganhoAnual() << endl;
+        break;
 
         case 2:
             std::cout << "Informe o turno do assistente administrativo (dia ou noite): ";
@@ -147,14 +147,14 @@ int main() {
             std::cin >> adicionalNoturno;
             admin.setNome(nome);
             admin.setMatricula(matricula);
-            admin.setTurno(turno);
+            admin.setSalario(salario);
             admin.setAdicionalNoturno(adicionalNoturno);
+            admin.setTurno(turno);
+            std::cout << std::endl << "Dados do empregado:" << endl;
+            admin.exibeDados();
+            std::cout << "Ganho anual do técnico: " << admin.ganhoAnual() << endl;
             break;
     }
-
-    std::cout << std::endl << "Dados do técnico:" << endl;
-    tecnico.exibeDados();
-    std::cout << "Ganho anual do técnico: " << tecnico.ganhoAnual() << endl;
 
     return 0;
 }
