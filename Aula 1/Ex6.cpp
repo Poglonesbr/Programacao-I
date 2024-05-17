@@ -35,7 +35,7 @@ public:
         matricula = _matricula;
     }
 
-    void exibeDados() override {
+    void exibeDados() {
         Funcionario::exibeDados();
         std::cout << "Matrícula: " << matricula << endl;
     }
