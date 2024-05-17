@@ -41,9 +41,7 @@ using namespace std;
 
 int main() { 
         Circulo conta; // Instanciar a class no main para ser utilizada no main
-        float raio; // Definir variaveis
-        float area;
-        float perimetro;
+        float raio; // Definir variavel
         
         std::cout << "Digite o valor do raio: "; // Pedir valor do raio
         std::cin >> raio;
