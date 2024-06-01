@@ -18,37 +18,52 @@ public:
 
 		consultarMulta();
 
-		multa -= credito;
-		std::cout << "Digite o valor do pagamento: ";
-		std::cin >> valorPagamento;
+		if (credito >= multa) {
+			credito = credito - multa;
+			multa = 0;
+		}
+		else {
+			std::cout << "Digite o valor do pagamento: ";
+			std::cin >> valorPagamento;
 
-		if ((multa - valorPagamento) < 0) {
-			std::cout << "O valor de pagamento é maior do que o valor da multa atual " << multa << ". \nVocê deseja adicionar o valor restante como crédito ? \n1 - Sim 2 - Não";
-			std::cin >> opcao;
+			if ((multa - valorPagamento) < 0) {
+				std::cout << "O valor de pagamento é maior do que o valor da multa atual R$" << multa << ". \nVocê deseja adicionar o valor restante como crédito ? \n1 - Sim 2 - Não:\n";
+				std::cin >> opcao;
 
-			switch (opcao) {
-			case 1:
-				multa -= valorPagamento;
+				switch (opcao) {
+				case 1:
+					if ((multa - valorPagamento) < 0) {
 
-				if ((multa - valorPagamento) > 0) {
-					credito = multa;
-					multa = 0;
-					std::cout << "O valor de credito de sua conta agora é: ", credito;
+						multa = valorPagamento - multa;
+						credito = multa;
+						multa = 0;
+						std::cout << "O valor de credito de sua conta agora é: " << credito << endl;
+					}
+					break;
+
+				case 2:
+					std::cout << "Como não deseja adicionar como crédito peço que refaça o pagamento. \nAgradeço a compreensão!";
+					pagarMulta();
+
+					break;
+
+				default:
+					std::cout << "O numero não corresponde com qualquer opção citada! Refaça o pagamento!";
+					pagarMulta();
+
+					break;
 				}
-			case 2:
-				std::cout << "Como não deseja adicionar como crédito peço que refaça o pagamento. \nAgradeço a compreensão!";
-				pagarMulta();
-
-			default:
-				std::cout << "O numero não corresponde com qualquer opção citada! Refaça o pagamento!";
-				pagarMulta();
+			}
+			else {
+				multa -= valorPagamento;
+				std::cout << "Sua multa está no valor de R$" << multa << " atualmente." << endl;
 			}
 		}
+		
+		
 
 		
 	}
-
-
 
 	void consultarMulta() {
 		if (multa == 0) {
@@ -59,7 +74,7 @@ public:
 				std::cout << "A sua multa é de R$" << multa << ". \n";
 			}
 			else {
-				std::cout << "\nA sua multa é de R$" << multa << ", retirando do credito disponivel para debitar sua conta, ela fica no total de R$" << multa - credito << ".";
+				std::cout << "\nA sua multa é de R$" << multa << ", você pode utilizar os R$" << credito << " disponiveis como crédito." << endl;
 			}
 
 		}
@@ -97,5 +112,4 @@ int main() {
 	Usuario user;
 
 
-	user.pagarMulta();
 }
