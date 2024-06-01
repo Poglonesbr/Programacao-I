@@ -1,0 +1,15 @@
+{
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskLabel": "tarefa-Usuario",
+      "appliesTo": "Aula 2/Exercicio5/Usuario.cpp",
+      "type": "launch"
+    },
+    {
+      "taskLabel": "tarefa-Usuario",
+      "appliesTo": "Aula 2/Exercicio5/Usuario.cpp",
+      "type": "launch"
+    }
+  ]
+}
