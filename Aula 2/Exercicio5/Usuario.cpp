@@ -9,13 +9,32 @@ public:
 	Usuario() {};
 	~Usuario() {};
 
-	void fazerLogin(std::string email, std::string senha) {
+	void setInfo(std::string _senha, std::string _email, std::string _nome) {
+		senha = _senha;
+		email = _email;
+		nome = _nome;
+	}
 
+	Usuario fazerLogin(std::string email, std::string senha, std::vector<Usuario> *usuarios) {
+		std::cout << "Digite seu email de login: ";
+		std::cin >> email;
+		std::cout << "Digite sua senha: ";
+		std::cin >> senha;
+		for (int i = 0; i < usuarios->size(); i++) {
+			if (email == usuarios->at(i).email && senha == usuarios->at(i).senha) {
+				std::cout << "Login realizado com sucesso!";
+				
+				return usuarios->at(i);
+			}
+			std::cout << "Login não realizado!";
+			fazerLogin(senha, email, usuarios);
+		}
+		
 	}
 
 	void pagarMulta() {
 		int opcao = 0;
-
+		float valorPagamento;
 		consultarMulta();
 
 		if (credito >= multa) {
@@ -65,7 +84,7 @@ public:
 		
 	}
 
-	void consultarMulta() {
+	void consultarMulta()  {
 		if (multa == 0) {
 			std::cout << "Não há multa em sua conta!";
 		}
@@ -80,36 +99,45 @@ public:
 		}
 	}
 
-		void cadastro() {
-			std::cout << "Escreva seu nome de usuario: ";
-			std::cin >> nome;
-			std::cout << "Digite seu email: ";
-			std::cin >> email;
-			std::cout << "Digite sua senha: ";
-			std::cin >> senha;
-		}
 
 		void verLivros() {
 
 		}
 
+		
 		std::string nome;
 		std::string email;
 		float multa = 10;
-		float valorPagamento;
 		float credito = 0;
 
 	protected:
 	std::string senha;
 	std::string telefone;
-
-
-	
 };
+
+
+void cadastro( std::vector<Usuario*> usuarios) {
+	std::string nome;
+	std::string email; 
+	std::string senha;
+
+	std::cout << "Escreva seu nome de usuario: ";
+	std::cin >> nome;
+	std::cout << "Digite seu email: ";
+	std::cin >> email;
+	std::cout << "Digite sua senha: ";
+	std::cin >> senha;
+
+	Usuario usuario_new;
+	usuario_new.setInfo(senha, email, nome);
+}
 
 
 int main() {
 	Usuario user;
+	std::vector<Usuario*> usuarios;
+	
+	cadastro(usuarios);
 
 
 }
