@@ -1,10 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\PedroEscola\\Nova pasta\\Programacao-I\\",
+  "WorkspaceRootPath": "C:\\Users\\pedro\\source\\repos\\Poglonesbr\\Programacao-I\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\PedroEscola\\Nova pasta\\Programacao-I\\Aula 2\\Exercicio5\\Usuario.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Aula 2\\Exercicio5\\Usuario.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\PedroEscola\\Nova pasta\\Programacao-I\\Aula 2\\Exercicio5\\Usuario.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -21,10 +20,8 @@
               "DocumentIndex": 0,
               "Title": "Usuario.cpp",
               "DocumentMoniker": "D:\\PedroEscola\\Nova pasta\\Programacao-I\\Aula 2\\Exercicio5\\Usuario.cpp",
-              "RelativeDocumentMoniker": "Aula 2\\Exercicio5\\Usuario.cpp",
               "ToolTip": "D:\\PedroEscola\\Nova pasta\\Programacao-I\\Aula 2\\Exercicio5\\Usuario.cpp",
-              "RelativeToolTip": "Aula 2\\Exercicio5\\Usuario.cpp",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAAAFoAAAAAAAAA",
+              "ViewState": "AQIAAAoAAAAAAAAAAABBwFoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-05-30T17:25:22.095Z",
               "IsPinned": true,
