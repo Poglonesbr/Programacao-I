@@ -8,30 +8,44 @@ public:
 	Usuario() {};
 	~Usuario() {};
 
-	void setInfo(std::string _senha, std::string _email, std::string _nome) {
+	void setInfo(std::string _senha, std::string _email, std::string _nome);
 
-	}
+	Usuario fazerLogin(std::string email, std::string senha, std::vector<Usuario> *usuarios, std::vector<Administrador> *adms);
 
-	Usuario fazerLogin(std::string email, std::string senha, std::vector<Usuario>* usuarios) {
+	void pagarMulta();
 
-	}
+	void consultarMulta();
 
-	void pagarMulta() {
-		}
+	void verLivros();
 
-	void consultarMulta() {
-		
-	}
+	void opcaoAcao();
 
-
-	void verLivros() {
-
-	}
-
-
+	void solicitarEmprestimo();
+	
+	std::string email;
+	std::string nome;
+	float credito;
+	float multa;
+protected:
+	bool adm = false;
+	std::string senha;
 };
 
 
-void cadastro(std::vector<Usuario*> usuarios) {
+
+
+class Administrador : public Usuario {
+public:
+	Administrador() {};
+	~Administrador() {};
+
+	Livro adicionarLivro();
+
+	void opcaoAcao(std::vector<Usuario*> usuarios);
+
+	void removerUsuario(std::vector <Usuario*> usuarios);
 	
-}
+};
+
+
+void cadastro(std::vector<Usuario*> usuarios);
