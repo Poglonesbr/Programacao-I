@@ -9,7 +9,6 @@ class Usuario(){
     Usuario(){}
     ~Usuario(){}
 
-    
     std::string login;
     protected: 
     std::string email, telefone, addr, cpf;
