@@ -27,8 +27,7 @@ class Produto(){
     void setPreco (float _preco){
         preco=_preco;
     }
-
-    void verificarQuantidade();
+    
     protected:
     std::string nome, marca, estado;
     int id, quantidade;
@@ -36,7 +35,7 @@ class Produto(){
 };
 
 int main(){
-    vector<Produto> produtos;
+    std::vector<Produto> produtos;
 }
 
 #endif
