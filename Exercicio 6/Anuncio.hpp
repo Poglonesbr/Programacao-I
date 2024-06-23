@@ -8,6 +8,8 @@
 #include <windows.h>
 #include "Anuncio.cpp"
 
+class Usuario;
+
 class Anuncio{
     public:
     Anuncio(){}
@@ -20,9 +22,21 @@ class Anuncio{
         descricao=_descricao
     }
 
+    void setUsuario(Usuario* usuario2){
+        this->Usario=usuario2;
+    }
+
+    Usuario* usuario2;
     std::string titulo, descricao;
     protected:
     int id;
 };
+
+int main(){
+    Usuario* usuario2;
+    Anuncio* anuncio;
+    anuncio->setUsuario(usuario2);
+    return 0
+}
 
 #endif
