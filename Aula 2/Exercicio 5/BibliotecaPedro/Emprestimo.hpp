@@ -5,21 +5,18 @@
 #include <chrono>
 #include <ctime>
 #include <sstream>
-#include <windows.h>
+//#include <windows.h>
 #include "Livro.hpp"
 
 class Emprestimo {
 public:
-    Emprestimo(Livro& livro, int& counterLoan);
+    Emprestimo(Livro& livro);
     ~Emprestimo();
     void setMulta(float _multa);
     Livro* getLivroEmprestado();
     std::string getDtaDevolucao();
     std::string getDtaEmprestimo();
-    float getMulta();
-    int getId();
-    void calcMulta();
-    void fazerEmprestimo(float& multa, std::vector<Livro>& livros);
+    void fazerEmprestimo(float& multa, std::vector<Livro*>& livros);
 protected:
     std::chrono::time_point<std::chrono::system_clock> dtaDevolucao;
     std::chrono::time_point<std::chrono::system_clock> dtaEmprestimo;

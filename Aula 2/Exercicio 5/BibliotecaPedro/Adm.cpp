@@ -12,9 +12,9 @@ Administrador::Administrador(int& id_user, std::string _senha, std::string _emai
 	email = _email;
 };
 
-	Administrador Administrador::fazerLogin (std::string email, std::string senha, std::vector<Administrador>& adms) {
+	Administrador* Administrador::fazerLogin (std::string email, std::string senha, std::vector<Administrador*>& adms) {
 	for (int i = 0; i < adms.size(); i++) {
-		if (email == adms.at(i).email && senha == adms.at(i).senha) {
+		if (email == adms.at(i)->email && senha == adms.at(i)->senha) {
 			std::cout << "Login realizado com sucesso!";
 			return adms.at(i);
 		}
@@ -23,7 +23,7 @@ Administrador::Administrador(int& id_user, std::string _senha, std::string _emai
 	
 }
 
-	void Administrador::adicionarLivro(std::vector<Livro> &livros) {
+	void Administrador::adicionarLivro(std::vector<Livro*> &livros) {
 	std::string titulo, autor, ISBN, editora, localizacao;
 	int num_copia;
 
@@ -51,12 +51,12 @@ Administrador::Administrador(int& id_user, std::string _senha, std::string _emai
 	
 }
 
-	void Administrador::removerUsuario(std::vector<Usuario> &usuarios) {
+	void Administrador::removerUsuario(std::vector<Usuario*>& usuarios) {
 	int _id;
 	std::cout << "Digite o id do Usuario a ser exclu�do: ";
 	std::cin >> _id;
 	for (int i = 0; i < usuarios.size(); i++) {
-		if (_id == usuarios.at(i).id) {
+		if (_id == usuarios.at(i)->id) {
 			usuarios.erase(usuarios.begin() + i);
 			std::cout << "Usuario excluido com sucesso!";
 			return;

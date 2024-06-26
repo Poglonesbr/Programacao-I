@@ -14,7 +14,7 @@ public:
 
     void setInfo(std::string _senha, std::string _email, std::string _nome);
 
-    Usuario fazerLogin(std::string email, std::string senha, std::vector<Usuario>& usuarios);
+    Usuario* fazerLogin(std::string email, std::string senha, std::vector<Usuario*>& usuarios);
 
 	void pagarMulta();
 	

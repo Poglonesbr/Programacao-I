@@ -13,12 +13,12 @@ public:
 	Administrador(int& id_user, std::string senha, std::string email);
 	~Administrador() {};
 
-	Administrador fazerLogin(std::string email, std::string senha, std::vector<Administrador>& adms);
+	Administrador* fazerLogin(std::string email, std::string senha, std::vector<Administrador*>& adms);
 
 
-	void adicionarLivro(std::vector<Livro> &livros);
+	void adicionarLivro(std::vector<Livro*> &livros);
 
-	void removerUsuario(std::vector<Usuario> &usuarios);
+	void removerUsuario(std::vector<Usuario*> &usuarios);
 
 };
 #endif

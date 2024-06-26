@@ -20,13 +20,13 @@ Usuario::~Usuario() {};
 		nome = _nome;
 	}
 
-	Usuario Usuario::fazerLogin(std::string email, std::string senha, std::vector<Usuario> &usuarios) {
+	Usuario* Usuario::fazerLogin(std::string email, std::string senha, std::vector<Usuario*>& usuarios) {
 		std::cout << "Digite seu email de login: ";
 		std::cin >> email;
 		std::cout << "Digite sua senha: ";
 		std::cin >> senha;
 		for (int i = 0; i < usuarios.size(); i++) {
-			if (email == usuarios.at(i).email && senha == usuarios.at(i).senha) {
+			if (email == usuarios.at(i)->email && senha == usuarios.at(i)->senha) {
 				std::cout << "Login realizado com sucesso!";
 				return usuarios.at(i);
 			}
@@ -66,12 +66,12 @@ Usuario::~Usuario() {};
 					break;
 
 				case 2:
-					std::cout << "Como nao deseja adicionar como credito peço que refaça o pagamento. \nAgradeço a compreensao!";
+					std::cout << "Como nao deseja adicionar como credito peï¿½o que refaï¿½a o pagamento. \nAgradeï¿½o a compreensao!";
 					pagarMulta();
 					break;
 
 				default:
-					std::cout << "O numero nao corresponde com qualquer opcao citada! Refaça o pagamento!";
+					std::cout << "O numero nao corresponde com qualquer opcao citada! Refaï¿½a o pagamento!";
 					pagarMulta();
 					break;
 				}
@@ -93,7 +93,7 @@ Usuario::~Usuario() {};
 				std::cout << "A sua multa e de R$" << multa << ". \n";
 			}
 			else {
-				std::cout << "\nA sua multa e de R$" << multa << ", você pode utilizar os R$" << credito << " disponiveis como credito." << endl;
+				std::cout << "\nA sua multa e de R$" << multa << ", vocï¿½ pode utilizar os R$" << credito << " disponiveis como credito." << endl;
 			}
 		}
 	}

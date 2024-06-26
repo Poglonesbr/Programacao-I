@@ -28,17 +28,17 @@ using namespace std;
     }
 
 
-    void Livro::verLivros(std::vector<Livro>& livros) const {
+    void Livro::verLivros(std::vector<Livro*>& livros) const {
         if (livros.size() > 0) {
             std::cout << "Informacoes dos livros disponiveis:";
 
             for (int i = 0; i < livros.size(); i++) {
                 if (!isEmprestado) {
-                    std::cout << "Titulo: ", livros.at(i).titulo;
-                    std::cout << "Autor: ", livros.at(i).autor;
-                    std::cout << "ISBN: ", livros.at(i).ISBN;
-                    std::cout << "Editora: ", livros.at(i).editora;
-                    std::cout << "Localização: ", livros.at(i).localizacao;
+                    std::cout << "Titulo: ", livros.at(i)->titulo;
+                    std::cout << "Autor: ", livros.at(i)->autor;
+                    std::cout << "ISBN: ", livros.at(i)->ISBN;
+                    std::cout << "Editora: ", livros.at(i)->editora;
+                    std::cout << "Localizaï¿½ï¿½o: ", livros.at(i)->localizacao;
                 };
             };
             return;

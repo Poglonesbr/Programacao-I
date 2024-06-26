@@ -21,7 +21,7 @@ public:
     
     void setIsEmprestado(bool _isEmprestado);
 
-    void verLivros(std::vector<Livro>& livros) const;
+    void verLivros(std::vector<Livro*>& livros) const;
 
     std::string titulo, autor, ISBN, editora, localizacao;
     bool isEmprestado = false;

@@ -9,7 +9,7 @@
 #include <iostream>
 using namespace std;
 
-static void opcaoAcao(std::vector<Usuario>& usuarios, std::vector<Livro>& livros, Administrador adm) {
+static void opcaoAcao(std::vector<Usuario*>& usuarios, std::vector<Livro*>& livros, Administrador adm) {
 	Usuario user;
 	Livro livro;
 	int opcao;
@@ -47,7 +47,7 @@ static void opcaoAcao(std::vector<Usuario>& usuarios, std::vector<Livro>& livros
 	};
 }
 
-static void cadastro(std::vector<Usuario>& usuarios, int& id_user, Usuario& user, Administrador& adm, std::vector<Administrador>& adms) {
+static void cadastro(std::vector<Usuario*>& usuarios, int& id_user, Usuario& user, Administrador& adm, std::vector<Administrador*>& adms) {
 	std::string nome;
 	std::string email;
 	std::string senha;
@@ -65,10 +65,10 @@ static void cadastro(std::vector<Usuario>& usuarios, int& id_user, Usuario& user
 		std::cout << "Voce e administrador? 1-Sim, 2-Nao";
 		std::cin >> _opc;
 		if (_opc == 1) {
-			adm = adm.fazerLogin(email, senha, adms);
+			adm.fazerLogin(email, senha, adms); //Estava como adm=adm.fazerLogin(email, senha, adms);
 			return;
 		}
-		user = user.fazerLogin(email, senha, usuarios);
+		user.fazerLogin(email, senha, usuarios);//Estava como user = user.fazerLogin(email, senha, usuarios);
 		return;
 	}
 	std::cout << "Voce e administrador? 1-Sim, 2-Nao";
@@ -90,9 +90,9 @@ int main() {
 	Administrador adm;
 	Usuario user;
 	Livro livro;
-	std::vector<Livro> livros;
-	std::vector<Usuario> usuarios;
-	std::vector<Administrador> adms;
+	std::vector<Livro*> livros;
+	std::vector<Usuario*> usuarios;
+	std::vector<Administrador*> adms;
 	cadastro(usuarios, id_user, user, adm, adms);
 	opcaoAcao(usuarios, livros, adm);
 	return 0;
